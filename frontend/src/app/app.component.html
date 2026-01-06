@@ -1,0 +1,50 @@
+<div class="container">
+  <h1>AI Trading Analyzer (NSE India)</h1>
+  <p class="subtitle">LSTM • GRU • Transformer + Live Updates</p>
+
+  <div class="input-group">
+    <div class="search-container">
+      <input 
+        [(ngModel)]="searchQuery" 
+        (input)="onSymbolInput($event)"
+        (focus)="onInputFocus()"
+        (blur)="onInputBlur()"
+        placeholder="Search symbol (e.g. RELIANCE, NIFTY, BANKNIFTY)" 
+        class="search-input"
+        autocomplete="off"
+      />
+      <div class="suggestions-dropdown" *ngIf="showSuggestions && suggestions.length > 0">
+        <div 
+          *ngFor="let suggestion of suggestions" 
+          class="suggestion-item"
+          (mousedown)="selectSymbol(suggestion)"
+          [class.index]="suggestion.type === 'index'"
+        >
+          <span class="symbol">{{ suggestion.symbol }}</span>
+          <span class="type-badge" *ngIf="suggestion.type">{{ suggestion.type }}</span>
+        </div>
+      </div>
+    </div>
+    <button (click)="analyze()" [disabled]="loading">Analyze</button>
+  </div>
+
+  <div *ngIf="loading" class="loading">Running AI models...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div *ngIf="result" class="result">
+    <h2>Live Price: ₹{{ livePrice }} <span class="live">● LIVE</span></h2>
+    <h2 class="signal">{{ result.signal }}</h2>
+
+    <h3>Next Close Predictions</h3>
+    <ul class="predictions">
+      <li>LSTM: ₹{{ result.mlPredictions.lstm }}</li>
+      <li>GRU: ₹{{ result.mlPredictions.gru }}</li>
+      <li><strong>Transformer: ₹{{ result.mlPredictions.transformer }}</strong></li>
+      <li><strong>Average: ₹{{ result.mlPredictions.average }} → {{ result.mlPredictions.direction }}</strong></li>
+    </ul>
+
+    <h3>Low-Capital Options</h3>
+    <p>Cheapest Call: ₹{{ result.cheapestOptions.callPrice }} @ Strike {{ result.cheapestOptions.callStrike }}</p>
+    <p>Cheapest Put: ₹{{ result.cheapestOptions.putPrice }} @ Strike {{ result.cheapestOptions.putStrike }}</p>
+  </div>
+</div>

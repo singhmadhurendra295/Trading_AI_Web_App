@@ -1,0 +1,23 @@
+.container { padding: 40px; max-width: 900px; margin: auto; font-family: 'Segoe UI', sans-serif; }
+h1 { color: #1e88e5; text-align: center; }
+.subtitle { text-align: center; color: #666; margin-bottom: 30px; }
+.input-group { display: flex; align-items: flex-start; gap: 10px; position: relative; }
+.search-container { position: relative; flex: 1; }
+.search-input { padding: 12px; width: 100%; font-size: 16px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+.input-group button { padding: 12px 24px; background: #1e88e5; color: white; border: none; cursor: pointer; border-radius: 4px; font-size: 16px; white-space: nowrap; }
+.suggestions-dropdown { position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #ccc; border-radius: 4px; margin-top: 4px; max-height: 300px; overflow-y: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; }
+.suggestion-item { padding: 12px 16px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f0f0f0; transition: background-color 0.2s; }
+.suggestion-item:hover { background-color: #f5f5f5; }
+.suggestion-item:last-child { border-bottom: none; }
+.suggestion-item.index { background-color: #e3f2fd; }
+.suggestion-item.index:hover { background-color: #bbdefb; }
+.symbol { font-weight: 600; color: #333; }
+.type-badge { font-size: 11px; padding: 4px 8px; background-color: #1e88e5; color: white; border-radius: 12px; text-transform: uppercase; font-weight: 500; }
+.suggestion-item.index .type-badge { background-color: #1976d2; }
+.result { margin-top: 40px; padding: 30px; background: #f8f9fa; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+.signal { color: #d32f2f; font-size: 32px; text-align: center; margin: 20px 0; }
+.live { color: #4caf50; animation: blink 1.5s infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.predictions { font-size: 18px; line-height: 2; }
+.loading { color: #1e88e5; font-style: italic; text-align: center; margin: 20px; }
+.error { color: red; text-align: center; }

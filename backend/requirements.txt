@@ -1,0 +1,16 @@
+flask
+flask-cors
+
+# Data & NSE
+nsepython
+yfinance
+pandas==2.3.3
+numpy>=1.25
+
+# Machine learning
+tensorflow>=2.20.0
+scikit-learn>=1.2
+pandas-ta-classic
+
+# Testing
+pytest
